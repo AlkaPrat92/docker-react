@@ -3,18 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t alkapratyush92/react-test -f ./client/Dockerfile.dev 
+  - docker build -t AlkaPrat92/react-test -f ./client/Dockerfile.dev 
 
 script:
-  - docker run -e CI=true alkapratyush92/react-test npm test
+  - docker run -e CI=true AlkaPrat92/react-test npm test
 
 after_success:
-  - docker build -t alkapratyush92/docker-react-client ./client
-  - docker build -t alkapratyush92/docker-react-server ./server
-  - docker build -t alkapratyush92/docker-react-nginx ./nginx
-  - docker build -t alkapratyush92/docker-react-worker ./worker
+  - docker build -t AlkaPrat92/docker-react-client ./client
+  - docker build -t AlkaPrat92/docker-react-server ./server
+  - docker build -t AlkaPrat92/docker-react-nginx ./nginx
+  - docker build -t AlkaPrat92/docker-react-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push alkapratyush92/docker-react-client
-  - docker push alkapratyush92/docker-react-server
-  - docker push alkapratyush92/docker-react-nginx
-  - docker push alkapratyush92/docker-react-worker
+  - docker push AlkaPrat92/docker-react-client
+  - docker push AlkaPrat92/docker-react-server
+  - docker push AlkaPrat92/docker-react-nginx
+  - docker push AlkaPrat92/docker-react-worker
